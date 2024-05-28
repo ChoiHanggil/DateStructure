@@ -27,13 +27,15 @@ void Print(int array[], int count)
 	std::cout << "-----------------" << std::endl;
 }
 
-void Processing1(int array[], int count)
+void push(int array[], int count,int NUM_SIZE)
 {
 	int input{};
 	std::cout << " Input Push number :";
 	std::cin >> input;
 
 	array[count] = input;
+	
+
 }
 
 int main()
@@ -50,16 +52,33 @@ int main()
 		if (processing == 1)
 		{
 			count++;
-			Processing1(array, count);
-			Print(array, count);
+			if (count < NUM_SIZE)
+			{
+				push(array, count, NUM_SIZE);
+				Print(array, count);
+			}
+			else
+			{
+				count--;
+				Print(array, count);
+				std::cout << "배열이 꽉 찼습니다. 2 pop 해주세요" << std::endl;
+			}
+			
 		}
-		else if (processing == 2)
+		else if (processing == 2)//pop
 		{
 			if (count > -1)
 			{
 				count--;
+				Print(array, count);
 			}
-			Print(array, count);
+			else
+			{
+				Print(array, count);
+
+				std::cout << "배열이 비어 있습니다. 1 push 해주세요" << std::endl;
+			}
+			
 		}
 		else
 		{
